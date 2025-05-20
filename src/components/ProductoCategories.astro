@@ -1,0 +1,22 @@
+---
+import CardCategory from "./CardCategory.astro"
+---
+<section class="bg-gray-200 py-8 antialiased dark:bg-neutral-900 md:py-16" id="productCategories">
+    <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+      <div class="mb-4 flex items-center justify-center gap-4 md:mb-8">
+        <h2 class="text-center text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl w-96">Te ayudamos a organizar
+          tus eventos con éxito</h2>
+      </div>
+  
+      <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 ">
+        <CardCategory title="Moviliarios" href="moviliarios" imageUrl="/moviliarios/moviliarios1.webp"></CardCategory>
+        <CardCategory title="Bautizos" href="bautizos" imageUrl="/bautizos/bautizo1.webp"></CardCategory>
+        <CardCategory title="Cumpleaños" href="cumpleaños" imageUrl="/cumpleanios/cumple1.webp"></CardCategory>
+        <CardCategory title="Baby Shower" href="babyShower" imageUrl="/babyShowers/babyShower1.webp"></CardCategory>
+        <CardCategory title="Aniversarios" href="aniversarios" imageUrl="/aniversarios/aniversario1.webp"></CardCategory>
+        <CardCategory title="Cumpleaños Infantil" href="cumpleaniosInfantil" imageUrl="/cumpleaniosInfantil/cumpleInfantil1.webp"></CardCategory>
+        
+        
+      </div>
+    </div>
+  </section>

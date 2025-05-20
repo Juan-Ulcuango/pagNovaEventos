@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import CardECommerce1 from '../components/CardECommerce1.astro';
+import CardECommerce2 from '../components/CardECommerce2.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout title="Nova Eventos - Bautizos">
+    <div id="bautizos" class="pt-20">
+        <Navbar></Navbar>
+        <CardECommerce1 title='Pieza Central para Decoración de Eventos' description='Diseñado para eventos como cumpleaños, bautizos, graduaciones y muchos más, combina elegancia y comodidad. Fabricado con materiales resistentes y fácil de transportar, garantiza un toque sofisticado en cualquier decoración.' uniqueId="bautizos1" images={['/bautizos/bautizo1.webp', '/bautizos/bautizo2.webp','/bautizos/bautizo3.webp']}></CardECommerce1>
+        <CardECommerce2></CardECommerce2>
+        <CardECommerce1 uniqueId="bautizos2"></CardECommerce1>
+        <Footer></Footer>
+    </div>
+</Layout>

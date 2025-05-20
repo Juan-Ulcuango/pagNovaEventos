@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import CardECommerce1 from '../components/CardECommerce1.astro';
+import CardECommerce2 from '../components/CardECommerce2.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout title="Nova Eventos - Moviliarios">
+    <div id="moviliarios" class="pt-20">
+        <Navbar></Navbar>
+        <CardECommerce1 title='Pieza Central para Decoración de Eventos' description='Diseñado para eventos como cumpleaños, bautizos, graduaciones y muchos más, combina elegancia y comodidad. Fabricado con materiales resistentes y fácil de transportar, garantiza un toque sofisticado en cualquier decoración.' uniqueId="moviliarios1" images={['/moviliarios/moviliarios1.webp', '/moviliarios/moviliarios2.webp','/moviliarios/moviliarios3.webp']}></CardECommerce1>
+        <CardECommerce2 title='Mobiliario Elegante para Eventos Exclusivos' description='Transforma tus eventos con esta mesa auxiliar moderna, perfecta para centros de convenciones o fiestas temáticas. Su diseño versátil y superficie resistente la hacen imprescindible para decoradores profesionales.' uniqueId="moviliarios2" images={['/moviliarios/moviliarios4.webp', '/moviliarios/moviliarios5.webp','/moviliarios/moviliarios6.webp']}></CardECommerce2>
+        <CardECommerce1 title='Mobiliario Elegante y Corono para Decoración de Eventos' description='Corona y moviliario, ideales para bodas, galas o eventos corporativos. Disponible en diferentes estilos decorativos bajo pedido. ¡Haz de tu evento una experiencia inolvidable!' uniqueId="moviliarios3" images={['/moviliarios/moviliarios7.webp', '/moviliarios/moviliarios8.webp']}></CardECommerce1>
+        <Footer></Footer>
+    </div>
+</Layout>
