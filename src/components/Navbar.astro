@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro"
+import NovaIcono from "../icons/novaIcono.astro"
 ---
 <nav
   class="dark:text-white text-black bg-transparent fixed top-0 left-0 w-full z-50 transition-all duration-300 group uppercase"
@@ -7,9 +8,9 @@ import ThemeToggle from "./ThemeToggle.astro"
 >
   <div class="flex flex-row items-center justify-between p-4">
     <div id="logo-container" class="flex flex-row items-center space-x-4 pl-4 md:pl-10">
-      <div><img src="Logo.svg" alt="Nova Eventos Logo" width="50" /></div>
+      <div class="hidden md:block"><NovaIcono></NovaIcono></div>
       <div>
-        <a href="/" class="text-2xl font-bold">Nova Eventos</a>
+        <a href="/" class="text-2xl font-bold hidden md:block">Nova Eventos</a>
       </div>
     </div>
    
@@ -19,13 +20,14 @@ import ThemeToggle from "./ThemeToggle.astro"
         <li><a href="/" class="hover:text-gray-400">Inicio</a></li>
         <li><a href="/about" class="hover:text-gray-400">Sobre Nosotros</a></li>
         <li><a href="#productCategories" class="hover:text-gray-400">Servicios</a></li>
-        <li><a href="/contact" class="hover:text-gray-400">Contactanos</a></li>
+        <li><a href="#contact" class="hover:text-gray-400">Contactanos</a></li>
       </ul>
     </div>
    
-    <div class="flex items-center space-x-4 pr-4 md:pr-10">
-      <ThemeToggle />
-      
+    <div class="flex items-center space-x-1 pr-4 md:pr-10">
+      <div class="items-end">
+        <ThemeToggle />
+      </div>
       <!-- Botón de menú hamburguesa para dispositivos móviles -->
       <button id="mobile-menu-button" class="md:hidden flex items-center" aria-label="Open menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -48,6 +50,7 @@ import ThemeToggle from "./ThemeToggle.astro"
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    // Seleccionar elementos del DOM
     const navbar = document.getElementById("main-navbar");
     const navLinks = document.getElementById("nav-links");
     const mobileMenuButton = document.getElementById("mobile-menu-button");
@@ -55,57 +58,62 @@ import ThemeToggle from "./ThemeToggle.astro"
     const scrollThreshold = 30;
     let lastScrollPosition = 0;
     
+    // Verificar que los elementos existen antes de usarlos
+    if (!mobileMenuButton || !mobileMenu || !navbar || !navLinks) {
+        console.error("No se encontraron uno o más elementos del DOM");
+        return;
+    }
+    
     // Manejo del menú móvil
     mobileMenuButton.addEventListener("click", () => {
-      if (mobileMenu.classList.contains("hidden")) {
-        mobileMenu.classList.remove("hidden");
-        mobileMenu.classList.add("block");
-        
-        // Cambiar el icono a X
-        mobileMenuButton.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        `;
-      } else {
-        mobileMenu.classList.add("hidden");
-        mobileMenu.classList.remove("block");
-        
-        // Volver al icono de hamburguesa
-        mobileMenuButton.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        `;
-      }
+        if (mobileMenu.classList.contains("hidden")) {
+            mobileMenu.classList.remove("hidden");
+            mobileMenu.classList.add("block");
+            
+            // Cambiar el icono a X
+            mobileMenuButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            `;
+        } else {
+            mobileMenu.classList.add("hidden");
+            mobileMenu.classList.remove("block");
+            
+            // Volver al icono de hamburguesa
+            mobileMenuButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            `;
+        }
     });
     
     // Comportamiento de scroll en dispositivos medianos y grandes
     window.addEventListener("scroll", () => {
-      const currentScrollPosition = window.scrollY;
-      
-      if (currentScrollPosition > scrollThreshold) {
-        navbar.classList.add("navbar-scrolled");
+        const currentScrollPosition = window.scrollY;
         
-      } else {
-        navbar.classList.remove("navbar-scrolled");
-        navLinks.style.opacity = "1";
-        
-        // Cerrar menú móvil al volver arriba
-        if (window.innerWidth < 768) {
-          mobileMenu.classList.add("hidden");
-          mobileMenu.classList.remove("block");
-          mobileMenuButton.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          `;
+        if (currentScrollPosition > scrollThreshold) {
+            navbar.classList.add("navbar-scrolled");
+        } else {
+            navbar.classList.remove("navbar-scrolled");
+            navLinks.style.opacity = "1";
+            
+            // Cerrar menú móvil al volver arriba
+            if (window.innerWidth < 768) {
+                mobileMenu.classList.add("hidden");
+                mobileMenu.classList.remove("block");
+                mobileMenuButton.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                `;
+            }
         }
-      }
-      
-      lastScrollPosition = currentScrollPosition;
+        
+        lastScrollPosition = currentScrollPosition;
     });
-  });
+});
 </script>
 
 <style>
