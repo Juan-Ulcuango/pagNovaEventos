@@ -18,9 +18,9 @@ import NovaIcono from "../icons/novaIcono.astro"
     <div id="nav-links" class="hidden md:block transition-all duration-500 ease-in-out transform">
       <ul class="flex space-x-4">
         <li><a href="/" class="hover:text-gray-400">Inicio</a></li>
+        <a href="/#productCategories" class="anchor-link hover:text-gray-400">Servicios</a>
+        <a href="/#contact" class="anchor-link hover:text-gray-400">Contactanos</a>
         <li><a href="/sobreNosotros" class="hover:text-gray-400">Sobre Nosotros</a></li>
-        <li><a href="#productCategories" class="hover:text-gray-400">Servicios</a></li>
-        <li><a href="#contact" class="hover:text-gray-400">Contactanos</a></li>
       </ul>
     </div>
    
@@ -40,16 +40,43 @@ import NovaIcono from "../icons/novaIcono.astro"
   <!-- Menú móvil (oculto por defecto) -->
   <div id="mobile-menu" class="hidden bg-white dark:bg-neutral-900 shadow-lg rounded-b-lg mx-4 overflow-hidden transition-all duration-300 ease-in-out">
     <ul class="py-2">
-      <li><a href="/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800">Home</a></li>
-      <li><a href="/about" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800">About</a></li>
-      <li><a href="/services" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800">Services</a></li>
-      <li><a href="/contact" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800">Contact</a></li>
+      <li><a href="/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800">Inicio</a></li>
+      <li><a href="/#productCategories" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800">Servicios</a></li>
+      <li><a href="/#contact" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800">Contacto</a></li>
+      <li><a href="/sobreNosotros" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800">Sobre Nosotros</a></li>
     </ul>
   </div>
 </nav>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+
+    function updateAnchorLinks() {
+      const currentPath = window.location.pathname;
+      const isHomePage = currentPath === '/';
+      
+      document.querySelectorAll('a[href*="#productCategories"], a[href*="#contact"]').forEach(link => {
+        const href = link.getAttribute('href');
+        
+        if(href){
+          if (isHomePage) {
+          link.setAttribute('href', href.replace('/#', '#'));
+        } else {
+          if (!href.startsWith('/#')) {
+            link.setAttribute('href', `/${href}`);
+          }
+        }
+        }
+      });
+    }
+
+    // Actualizar los enlaces al cargar la página
+    updateAnchorLinks();
+    
+    // También puedes actualizar los enlaces cuando cambia la ruta (opcional)
+    // Esto sería útil si usas un router de SPA
+    window.addEventListener('popstate', updateAnchorLinks);
+
     // Seleccionar elementos del DOM
     const navbar = document.getElementById("main-navbar");
     const navLinks = document.getElementById("nav-links");
