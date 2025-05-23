@@ -1,17 +1,16 @@
 ---
+import Buy from "../icons/buy.astro";
 
-// components/ProductCard.astro
 interface Props {
   title?: string;
   price?: string;
   description?: string;
-  images?: string[]; // Ahora aceptamos un array de imágenes
-  uniqueId?: string; // Identificador único para cada instancia del componente
-  imageHeight?: string; // Altura específica del contenedor de imagen (clase de Tailwind)
-  imageWidth?: string; // Ancho específico del contenedor de imagen (clase de Tailwind)
+  images?: string[]; 
+  uniqueId?: string;
+  imageHeight?: string; 
+  imageWidth?: string; 
 }
 
-// Valores por defecto con múltiples imágenes
 const { 
   title = 'Apple iMac 24" All-In-One Computer, Apple M1, 8GB RAM, 256GB SSD, Mac OS, Pink', 
   price = '', 
@@ -59,7 +58,6 @@ const mainImageContainerId = `mainImageContainer-${uniqueId}`;
         </div>
       </div>
 
-      <!-- Detalles del producto -->
       <div class="mt-6 sm:mt-8 lg:mt-0">
         <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
           {title}
@@ -70,29 +68,17 @@ const mainImageContainerId = `mainImageContainer-${uniqueId}`;
             {price}
           </p>
         </div>
-        <!-- Botones (se mantienen fijos) -->
         <div class="mt-6 sm:gap-4 sm:items-center sm:flex sm:mt-8">
           <a
             href="#"
-            class="flex items-center justify-center py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            class="flex items-center justify-center py-2.5 px-5 text-sm font-medium text-neutral-900 focus:outline-none bg-white rounded-lg border border-neutral-200 hover:bg-neutral-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-neutral-100 dark:focus:ring-neutral-700 dark:bg-neutral-800 dark:text-neutral-200 dark:border-neutral-600 dark:hover:text-white dark:hover:bg-neutral-700"
           >
-            <svg class="w-5 h-5 -ms-2 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"/>
-            </svg>
-            Add to favorites
+            <Buy class="w-5 h-5 -ms-2 me-2" />
+            Solicitar
           </a>
-          <a
-            href="#"
-            class="text-white mt-4 sm:mt-0 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 flex items-center justify-center"
-          >
-            <svg class="w-5 h-5 -ms-2 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6"/>
-            </svg>
-            Add to cart
-          </a>
+          
         </div>
         <hr class="my-6 md:my-8 border-gray-200 dark:border-neutral-900" />
-        <!-- Descripción -->
         <p class="text-gray-500 dark:text-gray-400">
           {description}
         </p>
@@ -102,9 +88,7 @@ const mainImageContainerId = `mainImageContainer-${uniqueId}`;
 </section>
 
 <script define:vars={{ uniqueId }}>
-  // Script para manejar la funcionalidad del carrusel
   document.addEventListener('DOMContentLoaded', function() {
-    // Seleccionamos sólo los botones de miniatura de este carrusel específico
     const thumbnailButtons = document.querySelectorAll(`.thumbnail-btn-${uniqueId}`);
     
     thumbnailButtons.forEach(button => {
@@ -112,21 +96,17 @@ const mainImageContainerId = `mainImageContainer-${uniqueId}`;
         const index = this.getAttribute('data-index');
         const carouselId = this.getAttribute('data-carousel-id');
         
-        // Ocultar todas las imágenes principales de ESTE carrusel
         document.querySelectorAll(`[id^="mainImage-${carouselId}-"]`).forEach(img => {
           img.classList.add('hidden');
         });
         
-        // Mostrar la imagen seleccionada de ESTE carrusel
         document.getElementById(`mainImage-${carouselId}-${index}`).classList.remove('hidden');
         
-        // Actualizar estilos de los botones de miniaturas de ESTE carrusel
         thumbnailButtons.forEach(btn => {
           btn.classList.remove('border-primary-700', 'dark:border-primary-500');
           btn.classList.add('border-gray-200', 'dark:border-gray-700', 'opacity-70');
         });
         
-        // Resaltar la miniatura seleccionada
         this.classList.remove('border-gray-200', 'dark:border-gray-700', 'opacity-70');
         this.classList.add('border-primary-700', 'dark:border-primary-500');
       });
