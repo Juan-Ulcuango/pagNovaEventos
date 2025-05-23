@@ -1,14 +1,22 @@
+---
+import Award from "../icons/award.astro";
+import Barras from "../icons/barras.astro";
+import Check from "../icons/check.astro";
+---
+
 <section
   class="bg-gray-200 py-8 antialiased dark:bg-neutral-900 md:py-8"
   id="sobreNosotros"
 >
-<div class="mx-auto max-w-screen-xl 2xl:px-0">
+  <div class="mx-auto max-w-screen-xl 2xl:px-0">
     <div class="flex justify-center pb-14">
-      <div class="w-full h-72 md:w-[400px] overflow-hidden bg-gray-100 dark:bg-neutral-700 rounded-lg flex items-center justify-center relative"> 
-        <img 
-          src="/cumpleanios/cumple1.webp" 
-          alt="Decoración de eventos" 
-          class="absolute w-full h-full object-cover" 
+      <div
+        class="w-full h-72 md:w-[400px] overflow-hidden bg-gray-100 dark:bg-neutral-700 rounded-lg flex items-center justify-center relative"
+      >
+        <img
+          src="/cumpleanios/cumple1.webp"
+          alt="Decoración de eventos"
+          class="absolute w-full h-full object-cover"
           loading="lazy"
         />
       </div>
@@ -47,17 +55,22 @@
           Nova Eventos
         </h2>
         <p class="text-lg text-gray-600 dark:text-gray-400 text-center">
-          Transformamos momentos especiales en recuerdos
-          inolvidables. Comenzamos nuestro camino hace cinco años con una pasión
-          genuina por crear espacios únicos que reflejen la personalidad y los
-          sueños de nuestros clientes. Lo que inició en un intento de probar algo diferente
-          se ha convertido en el referente de decoración con mayor acogida, evidenciado por todos nuestros trabajos.
+          Transformamos momentos especiales en recuerdos inolvidables.
+          Comenzamos nuestro camino hace cinco años con una pasión genuina por
+          crear espacios únicos que reflejen la personalidad y los sueños de
+          nuestros clientes. Lo que inició en un intento de probar algo
+          diferente se ha convertido en el referente de decoración con mayor
+          acogida, evidenciado por todos nuestros trabajos.
         </p>
       </div>
-      <div>
-        <p class="text-lg text-gray-600 dark:text-gray-400 text-center">
-          ¡Nos encanta trabajar contigo para que tu evento sea inolvidable!
-        </p>
+      <div class="flex items-center justify-center">
+        <div class="flex items-center justify-center pt-36 md:pt-14 md:pl-28">
+          <div
+            class="flex items-center justify-center w-32 h-32 bg-gray-100 dark:bg-neutral-700 rounded-full text-neutral-700 dark:text-white"
+          >
+            <Award />
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -97,13 +110,14 @@
           </li>
         </ul>
       </div>
-      <div class="max-w-md">
-        <p
-          class="text-lg text-gray-700 dark:text-gray-300 text-center mt-8 md:mt-0"
-        >
-          ¡Nos encanta trabajar contigo para hacer de tu evento una experiencia
-          inolvidable!
-        </p>
+      <div class="flex items-center justify-center">
+        <div class="flex items-center justify-center pt-48 md:pt-14 md:pl-28">
+          <div
+            class="flex items-center justify-center w-32 h-32 bg-gray-100 dark:bg-neutral-700 rounded-full text-neutral-700 dark:text-white"
+          >
+            <Barras />
+          </div>
+        </div>
       </div>
     </div>
 
@@ -122,10 +136,12 @@
           visión de tu evento perfecto.
         </p>
       </div>
-      <div>
-        <p class="text-lg text-gray-600 dark:text-gray-400 text-center">
-          ¡Nos encanta trabajar contigo para que tu evento sea inolvidable!
-        </p>
+      <div class="flex items-center justify-center pt-36 md:pt-14 md:pl-28">
+        <div
+          class="flex items-center justify-center w-32 h-32 bg-gray-100 dark:bg-neutral-700 rounded-full text-neutral-700 dark:text-white"
+        >
+          <Check />
+        </div>
       </div>
     </div>
   </div>
@@ -154,8 +170,6 @@
       contentToShow.classList.remove("hidden");
       contentToShow.classList.add("flex", "flex-row");
     }
-
-    // Mostrar contenido por defecto al cargar
     if (campSobreNosotros) {
       showContent(campSobreNosotros);
     }
