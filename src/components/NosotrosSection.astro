@@ -1,0 +1,177 @@
+<section
+  class="bg-gray-200 py-8 antialiased dark:bg-neutral-900 md:py-8"
+  id="sobreNosotros"
+>
+<div class="mx-auto max-w-screen-xl 2xl:px-0">
+    <div class="flex justify-center pb-14">
+      <div class="w-full h-72 md:w-[400px] overflow-hidden bg-gray-100 dark:bg-neutral-700 rounded-lg flex items-center justify-center relative"> 
+        <img 
+          src="/cumpleanios/cumple1.webp" 
+          alt="Decoración de eventos" 
+          class="absolute w-full h-full object-cover" 
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+    <div class="mb-4 flex items-center justify-center gap-4 md:mb-8">
+      <div class="bg-neutral-700 p-6 rounded-lg w-full">
+        <div class="flex justify-center gap-4 flex-wrap">
+          <button
+            class="bg-neutral-500 text-white px-4 py-2 rounded hover:bg-neutral-600 transition"
+            id="btnSobreNosotros"
+          >
+            ¿Quiénes somos?
+          </button>
+          <button
+            class="bg-neutral-500 text-white px-4 py-2 rounded hover:bg-neutral-600 transition"
+            id="btnDiferentes"
+          >
+            ¿Qué nos hace diferentes?
+          </button>
+          <button
+            class="bg-neutral-500 text-white px-4 py-2 rounded hover:bg-neutral-600 transition"
+            id="btnMision"
+          >
+            Nuestra Misión
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden items-start justify-center gap-8" id="campSobreNosotros">
+      <div class="max-w-xl">
+        <h2
+          class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-4"
+        >
+          Nova Eventos
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400 text-center">
+          Transformamos momentos especiales en recuerdos
+          inolvidables. Comenzamos nuestro camino hace cinco años con una pasión
+          genuina por crear espacios únicos que reflejen la personalidad y los
+          sueños de nuestros clientes. Lo que inició en un intento de probar algo diferente
+          se ha convertido en el referente de decoración con mayor acogida, evidenciado por todos nuestros trabajos.
+        </p>
+      </div>
+      <div>
+        <p class="text-lg text-gray-600 dark:text-gray-400 text-center">
+          ¡Nos encanta trabajar contigo para que tu evento sea inolvidable!
+        </p>
+      </div>
+    </div>
+    <div
+      class="hidden items-start justify-center gap-8 flex-col md:flex-row"
+      id="campDiferentes"
+    >
+      <div class="max-w-xl">
+        <h2
+          class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-6"
+        >
+          Te ofrecemos
+        </h2>
+        <ul class="space-y-4 text-lg text-gray-600 dark:text-gray-400">
+          <li class="flex items-start gap-2">
+            <span
+              >Creamos decoraciones únicas que reflejan tu estilo y personalidad
+              para cada tipo de evento.</span
+            >
+          </li>
+          <li class="flex items-start gap-2">
+            <span
+              >Cuidamos cada aspecto, desde los colores hasta la disposición de
+              cada elemento.</span
+            >
+          </li>
+          <li class="flex items-start gap-2">
+            <span
+              >Trabajamos con materiales de alta calidad y técnicas
+              profesionales para un acabado impecable.</span
+            >
+          </li>
+          <li class="flex items-start gap-2">
+            <span
+              >Nos ocupamos del diseño, montaje y desmontaje, para que solo te
+              dediques a disfrutar.</span
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="max-w-md">
+        <p
+          class="text-lg text-gray-700 dark:text-gray-300 text-center mt-8 md:mt-0"
+        >
+          ¡Nos encanta trabajar contigo para hacer de tu evento una experiencia
+          inolvidable!
+        </p>
+      </div>
+    </div>
+
+    <div class="hidden items-start justify-center gap-8" id="campMision">
+      <div class="max-w-xl">
+        <h2
+          class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-4"
+        >
+          Misión
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400 text-center">
+          Creemos que cada celebración merece ser extraordinaria. Nos dedicamos
+          a diseñar y crear ambientes mágicos que superen las expectativas de
+          nuestros clientes, cuidando cada detalle desde la primera idea hasta
+          el último elemento decorativo. Nuestro compromiso es hacer realidad la
+          visión de tu evento perfecto.
+        </p>
+      </div>
+      <div>
+        <p class="text-lg text-gray-600 dark:text-gray-400 text-center">
+          ¡Nos encanta trabajar contigo para que tu evento sea inolvidable!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btnSobreNosotros = document.getElementById("btnSobreNosotros");
+    const btnDiferentes = document.getElementById("btnDiferentes");
+    const btnMision = document.getElementById("btnMision");
+    const campSobreNosotros = document.getElementById("campSobreNosotros");
+    const campDiferentes = document.getElementById("campDiferentes");
+    const campMision = document.getElementById("campMision");
+
+    function hideAll() {
+      [campSobreNosotros, campDiferentes, campMision].forEach((el) => {
+        if (el) {
+          el.classList.add("hidden");
+          el.classList.remove("flex", "flex-row");
+        }
+      });
+    }
+
+    function showContent(contentToShow) {
+      if (!contentToShow) return;
+      hideAll();
+      contentToShow.classList.remove("hidden");
+      contentToShow.classList.add("flex", "flex-row");
+    }
+
+    // Mostrar contenido por defecto al cargar
+    if (campSobreNosotros) {
+      showContent(campSobreNosotros);
+    }
+
+    if (btnSobreNosotros && campSobreNosotros) {
+      btnSobreNosotros.addEventListener("click", () =>
+        showContent(campSobreNosotros)
+      );
+    }
+    if (btnDiferentes && campDiferentes) {
+      btnDiferentes.addEventListener("click", () =>
+        showContent(campDiferentes)
+      );
+    }
+    if (btnMision && campMision) {
+      btnMision.addEventListener("click", () => showContent(campMision));
+    }
+  });
+</script>
