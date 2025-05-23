@@ -1,1 +1,9 @@
 @import "tailwindcss";
+/*
+  Configura Tailwind para que las clases 'dark:' se apliquen
+  cuando el elemento `html` (o `body`) tenga la clase `dark`.
+  Esto es fundamental para que tus estilos dark: funcionen.
+*/
+@custom-variant dark (&:where(.dark, .dark *));
+
+
