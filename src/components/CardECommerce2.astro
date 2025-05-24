@@ -9,6 +9,8 @@ interface Props {
   uniqueId?: string;
   imageHeight?: string;
   imageWidth?: string; 
+  phoneNumber?: string;
+  message?: string;
 }
 
 const { 
@@ -18,11 +20,14 @@ const {
   images = ['Img1.webp', 'Img2.webp', 'Img3.webp', 'Img4.webp'], 
   uniqueId = `carousel-${Math.random().toString(36).substring(2, 9)}`, 
   imageHeight = "h-96",
-  imageWidth = "w-full"
+  imageWidth = "w-full",
+  phoneNumber = '+593999266345',
+  message = 'Hola, estoy interesado en el producto que vi en su sitio web.'
 } = Astro.props;
 
 const carouselId = `carousel-${uniqueId}`;
 const mainImageContainerId = `mainImageContainer-${uniqueId}`;
+const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 ---
 
 <section class="py-8 bg-gray-200 md:py-16 dark:bg-neutral-900 antialiased">
@@ -41,7 +46,8 @@ const mainImageContainerId = `mainImageContainer-${uniqueId}`;
         </div>
         <div class="mt-6 sm:gap-4 sm:items-center sm:flex sm:mt-8">
           <a
-            href="#"
+            href={whatsappLink}
+            target="_blank"
             class="flex items-center justify-center py-2.5 px-5 text-sm font-medium text-neutral-900 focus:outline-none bg-white rounded-lg border border-neutral-200 hover:bg-neutral-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-neutral-100 dark:focus:ring-neutral-700 dark:bg-neutral-800 dark:text-neutral-200 dark:border-neutral-600 dark:hover:text-white dark:hover:bg-neutral-700"
           >
             <Buy class="w-5 h-5 -ms-2 me-2" />

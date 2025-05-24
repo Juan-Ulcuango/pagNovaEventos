@@ -1,8 +1,26 @@
-<svg width="35" height="35" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="4">
-  <path d="M50 5
-           C63 5, 95 37, 95 50
-           C95 63, 63 95, 50 95
-           C37 95, 5 63, 5 50
-           C5 37, 37 5, 50 5
-           Z" />
+---
+interface Props {
+  size?: number;
+  strokeWidth?: number;
+}
+const { size = 35, strokeWidth = 4 } = Astro.props;
+---
+
+<svg 
+  width={size}
+  height={size}
+  viewBox="0 0 100 100" 
+  xmlns="http://www.w3.org/2000/svg" 
+  fill="none"
+  stroke="currentColor"
+  stroke-width={strokeWidth}
+>
+  <path 
+    d="M50 5
+     C63 5, 95 37, 95 50
+     C95 63, 63 95, 50 95
+     C37 95, 5 63, 5 50
+     C5 37, 37 5, 50 5
+     Z" 
+  />
 </svg>

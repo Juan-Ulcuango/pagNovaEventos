@@ -14,7 +14,6 @@ import NovaIcono from "../icons/novaIcono.astro"
       </div>
     </div>
    
-    <!-- Menú para pantallas medianas y grandes -->
     <div id="nav-links" class="hidden md:block transition-all duration-500 ease-in-out transform">
       <ul class="flex space-x-4">
         <li><a href="/" class="hover:text-gray-400">Inicio</a></li>
@@ -70,11 +69,8 @@ import NovaIcono from "../icons/novaIcono.astro"
       });
     }
 
-    // Actualizar los enlaces al cargar la página
     updateAnchorLinks();
     
-    // También puedes actualizar los enlaces cuando cambia la ruta (opcional)
-    // Esto sería útil si usas un router de SPA
     window.addEventListener('popstate', updateAnchorLinks);
 
     // Seleccionar elementos del DOM
@@ -85,7 +81,6 @@ import NovaIcono from "../icons/novaIcono.astro"
     const scrollThreshold = 30;
     let lastScrollPosition = 0;
     
-    // Verificar que los elementos existen antes de usarlos
     if (!mobileMenuButton || !mobileMenu || !navbar || !navLinks) {
         console.error("No se encontraron uno o más elementos del DOM");
         return;
