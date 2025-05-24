@@ -1,6 +1,5 @@
 ---
 const { phoneNumber, message } = Astro.props;
-const validatedNumber = phoneNumber.replace(/[^\d+]/g, '');
 const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 import WhatsAppIcon from '../icons/whatsapp-icon.astro'; 
 
